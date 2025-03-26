@@ -1,5 +1,5 @@
 import "./styles.css";
-import render from "./ui.js";
+import { render, showLoader } from "./ui.js";
 import getWeatherData from "./weather.js";
 
 const extractWeatherData = (weatherData) => {
@@ -25,8 +25,23 @@ const extractWeatherData = (weatherData) => {
 		humidity: 79.2,
 	};
 
-	//const weatherData = await getWeatherData("palembang");
-	//const extractedData = extractWeatherData(weatherData);
+	showLoader();
 
-	render(mockWeatherData);
+	// Fake api call, coz why not
+	setTimeout(() => {
+		render(mockWeatherData);
+	}, 2000);
+
+	const form = document.querySelector("form");
+	form.addEventListener("submit", async (e) => {
+		e.preventDefault();
+
+		showLoader();
+
+		const input = e.target.querySelector("input#search");
+
+		const weatherData = await getWeatherData(input.value.trim());
+		const extractedData = extractWeatherData(weatherData);
+		render(extractedData);
+	});
 })();

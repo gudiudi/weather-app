@@ -17,4 +17,17 @@ const render = (weatherData) => {
 `;
 };
 
-export default render;
+const createLoaderElement = () => {
+	const loader = document.createElement("div");
+	loader.className = "loader";
+	return loader;
+};
+
+const showLoader = () => {
+	const loader = createLoaderElement();
+	const weatherDiv = document.querySelector(".weather");
+	weatherDiv.innerHTML = "";
+	weatherDiv.appendChild(loader);
+};
+
+export { render, showLoader };

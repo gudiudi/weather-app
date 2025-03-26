@@ -15,7 +15,7 @@ const extractWeatherData = (weatherData) => {
 	return { location, conditions, temperature, feelsLike, windSpeed, humidity };
 };
 
-(async () => {
+(() => {
 	const mockWeatherData = {
 		location: "Jakarta, Indonesia",
 		conditions: "Rain, Partially cloudy",
@@ -30,7 +30,7 @@ const extractWeatherData = (weatherData) => {
 	// Fake api call, coz why not
 	setTimeout(() => {
 		render(mockWeatherData);
-	}, 2000);
+	}, 1500);
 
 	const form = document.querySelector("form");
 	form.addEventListener("submit", async (e) => {

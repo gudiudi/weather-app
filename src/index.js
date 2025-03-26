@@ -1,5 +1,6 @@
 import "./styles.css";
 import { render, showLoader } from "./ui.js";
+import { convertSpeed, convertTemperature } from "./utils.js";
 import getWeatherData from "./weather.js";
 
 (() => {
@@ -18,6 +19,9 @@ import getWeatherData from "./weather.js";
 	setTimeout(() => {
 		render(mockWeatherData);
 	}, 1500);
+
+	console.log(convertTemperature(mockWeatherData.temperature, "c"));
+	console.log(convertSpeed(mockWeatherData.windSpeed, "km/h"));
 
 	const form = document.querySelector("form");
 	form.addEventListener("submit", async (e) => {

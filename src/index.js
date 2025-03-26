@@ -7,7 +7,7 @@ const extractWeatherData = (weatherData) => {
 		conditions,
 		temp: temperature,
 		feelslike: feelsLike,
-		winspeed: windSpeed,
+		windspeed: windSpeed,
 		humidity,
 	} = currentConditions;
 
@@ -15,7 +15,16 @@ const extractWeatherData = (weatherData) => {
 };
 
 (async () => {
-	const weatherData = await getWeatherData("palembang");
-	const extractedData = extractWeatherData(weatherData);
-	console.log(extractedData);
+	const mockWeatherData = {
+		location: "Jakarta, Indonesia",
+		conditions: "Rain, Partially cloudy",
+		temperature: 30,
+		feelsLike: 37.3,
+		windSpeed: 11.2,
+		humidity: 79.2,
+	};
+
+	//const weatherData = await getWeatherData("palembang");
+	//const extractedData = extractWeatherData(weatherData);
+	console.log(mockWeatherData);
 })();

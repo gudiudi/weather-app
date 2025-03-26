@@ -1,8 +1,9 @@
 {
 	"scripts": {
-		"build": "biome check . && webpack --config webpack.prod.js",
+		"build": "biome check src && webpack --config webpack.prod.js",
 		"dev": "webpack serve --open --config webpack.dev.js",
-		"deploy": "npm run build && npx gh-pages -d dist"
+		"deploy": "npm run build && npx gh-pages -d dist",
+		"check": "biome check src"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",

@@ -1,4 +1,5 @@
 import "./styles.css";
+import render from "./ui.js";
 import getWeatherData from "./weather.js";
 
 const extractWeatherData = (weatherData) => {
@@ -26,21 +27,6 @@ const extractWeatherData = (weatherData) => {
 
 	//const weatherData = await getWeatherData("palembang");
 	//const extractedData = extractWeatherData(weatherData);
-	console.log(mockWeatherData);
-	const weatherDiv = document.querySelector(".weather");
-	weatherDiv.innerHTML = `
-    <div class="weather-header">
-      <div class="weather-conditions">${mockWeatherData.conditions}</div>
-      <div class="weather-location">${mockWeatherData.location}</div>
-      
-    </div>
-    <div class="weather-content">
-    <div class="weather-temperature">${mockWeatherData.temperature}<span>°C</span></div>
-      <div class="weather-content-details">
-        <div class="weather-feelslike">Feels Like: ${mockWeatherData.feelsLike}<span>°C</span></div>
-        <div class="weather-windspeed">Wind: ${mockWeatherData.windSpeed} <span>km/h</span></div>
-        <div class="weather-humidity">Humidity: ${mockWeatherData.humidity}%</div>
-      </div>
-    </div>
-  `;
+
+	render(mockWeatherData);
 })();

@@ -33,14 +33,25 @@ form {
 	flex: 1;
 }
 
-input#search {
-	padding: 1rem 1rem;
+.search-box {
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+.search-box svg {
+	position: absolute;
+	padding: 10px;
+	left: 0;
+}
+
+.search-box input#search {
+	padding: 1rem 2.5rem;
 	border-radius: 30px;
 	border: none;
 	outline: none;
 	font-size: 16px;
 	color: #3f3f3f;
-	flex-basis: 25%;
 }
 
 .container {

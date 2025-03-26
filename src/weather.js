@@ -11,11 +11,24 @@ const getWeatherData = async (location) => {
 			throw new Error(`Response status: ${response.status}`);
 		}
 
-		const json = await response.json();
-		return json;
+		const weatherData = await response.json();
+		return extractWeatherData(weatherData);
 	} catch (e) {
 		console.error(e.message);
 	}
+};
+
+const extractWeatherData = (weatherData) => {
+	const { resolvedAddress: location, currentConditions } = weatherData;
+	const {
+		conditions,
+		temp: temperature,
+		feelslike: feelsLike,
+		windspeed: windSpeed,
+		humidity,
+	} = currentConditions;
+
+	return { location, conditions, temperature, feelsLike, windSpeed, humidity };
 };
 
 export default getWeatherData;

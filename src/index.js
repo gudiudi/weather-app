@@ -2,19 +2,6 @@ import "./styles.css";
 import { render, showLoader } from "./ui.js";
 import getWeatherData from "./weather.js";
 
-const extractWeatherData = (weatherData) => {
-	const { resolvedAddress: location, currentConditions } = weatherData;
-	const {
-		conditions,
-		temp: temperature,
-		feelslike: feelsLike,
-		windspeed: windSpeed,
-		humidity,
-	} = currentConditions;
-
-	return { location, conditions, temperature, feelsLike, windSpeed, humidity };
-};
-
 (() => {
 	const mockWeatherData = {
 		location: "Jakarta, Indonesia",
@@ -39,9 +26,7 @@ const extractWeatherData = (weatherData) => {
 		showLoader();
 
 		const input = e.target.querySelector("input#search");
-
 		const weatherData = await getWeatherData(input.value.trim());
-		const extractedData = extractWeatherData(weatherData);
-		render(extractedData);
+		render(weatherData);
 	});
 })();

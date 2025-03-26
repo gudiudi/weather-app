@@ -1,3 +1,9 @@
+@font-face {
+	font-family: "Poppins";
+	src: url("./assets/Poppins-Regular.ttf") format("ttf");
+	font-style: normal;
+}
+
 body {
 	height: 100vh;
 	margin: 0;
@@ -9,6 +15,7 @@ body {
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+	font-family: "Poppins", sans-serif;
 }
 
 .container {
@@ -24,11 +31,12 @@ body {
 }
 
 .weather-conditions {
-	font-size: 1.5rem;
+	font-size: 1.4rem;
 }
 
 .weather-location {
 	font-size: 2.5rem;
+	font-weight: bold;
 }
 
 .weather-content {
@@ -55,8 +63,7 @@ body {
 	align-items: start;
 	border-left: 1px solid #fff;
 	padding: 1rem;
-	gap: 0.2rem;
-	font-size: 1.1rem;
+	gap: 0.4rem;
 }
 
 .weather-feelslike {

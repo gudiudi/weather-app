@@ -1,9 +1,9 @@
-const getWeatherData = async (location) => {
+const getWeatherData = async (location, unit) => {
 	if (!location || location.trim() === "") {
 		throw new Error("Location is missing!");
 	}
 
-	const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/today?unitGroup=metric&include=current&key=7V89SJU8YEMTJ6L6V5ZUAES3E&contentType=json`;
+	const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/today?unitGroup=${unit}&include=current&key=7V89SJU8YEMTJ6L6V5ZUAES3E&contentType=json`;
 
 	try {
 		const response = await fetch(url);

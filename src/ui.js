@@ -1,4 +1,7 @@
-const render = (weatherData) => {
+const render = (weatherData, unit = "metric") => {
+	const temperatureUnit = unit === "metric" ? "°C" : "°F";
+	const speedUnit = unit === "metric" ? "km/h" : "mph";
+
 	const weatherDiv = document.querySelector(".weather");
 	weatherDiv.innerHTML = `
   <div class="weather-header">
@@ -7,10 +10,10 @@ const render = (weatherData) => {
     
   </div>
   <div class="weather-content">
-  <div class="weather-temperature">${weatherData.temperature}<span>°C</span></div>
+  <div class="weather-temperature">${weatherData.temperature}<span>${temperatureUnit}</span></div>
     <div class="weather-content-details">
-      <div class="weather-feelslike">Feels Like: ${weatherData.feelsLike}<span>°C</span></div>
-      <div class="weather-windspeed">Wind: ${weatherData.windSpeed} <span>km/h</span></div>
+      <div class="weather-feelslike">Feels Like: ${weatherData.feelsLike}<span>${temperatureUnit}</span></div>
+      <div class="weather-windspeed">Wind: ${weatherData.windSpeed} <span>${speedUnit}</span></div>
       <div class="weather-humidity">Humidity: ${weatherData.humidity}%</div>
     </div>
   </div>

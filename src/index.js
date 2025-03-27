@@ -4,7 +4,8 @@ import { convertSpeed, convertTemperature } from "./utils.js";
 import getWeatherData from "./weather.js";
 
 (() => {
-	const mockWeatherData = {
+	let unit = "metric";
+	let weatherData = {
 		location: "Jakarta, Indonesia",
 		conditions: "Rain, Partially cloudy",
 		temperature: 30,
@@ -17,11 +18,11 @@ import getWeatherData from "./weather.js";
 
 	// Fake api call, coz why not
 	setTimeout(() => {
-		render(mockWeatherData);
-	}, 500);
+		render(weatherData);
+	}, 1000);
 
-	console.log(convertTemperature(mockWeatherData.temperature, "c"));
-	console.log(convertSpeed(mockWeatherData.windSpeed, "km/h"));
+	console.log(convertTemperature(weatherData.temperature, "c"));
+	console.log(convertSpeed(weatherData.windSpeed, "km/h"));
 
 	const form = document.querySelector("form");
 	form.addEventListener("submit", async (e) => {
@@ -30,14 +31,19 @@ import getWeatherData from "./weather.js";
 		showLoader();
 
 		const input = e.target.querySelector("input#search");
-		const weatherData = await getWeatherData(input.value.trim());
+		weatherData = await getWeatherData(input.value.trim(), unit);
 
 		render(weatherData);
 	});
 
 	const unitButtonGroup = document.querySelector(".convert-button-group");
 	unitButtonGroup.addEventListener("click", (e) => {
-		//e.target.classList.add("active");
+		if (
+			e.target.classList.contains("active") ||
+			!e.target.classList.contains("convert-button")
+		)
+			return;
+
 		if (e.target.previousElementSibling?.classList.contains("active")) {
 			e.target.previousElementSibling.classList.remove("active");
 		}
@@ -47,6 +53,32 @@ import getWeatherData from "./weather.js";
 		}
 
 		e.target.classList.add("active");
-		console.log(e.target.dataset.unit);
+
+		weatherData.temperature = convertTemperature(
+			weatherData.temperature,
+			e.target.dataset.unit,
+		);
+		weatherData.feelsLike = convertTemperature(
+			weatherData.feelsLike,
+			e.target.dataset.unit,
+		);
+		weatherData.windSpeed = convertSpeed(
+			weatherData.windSpeed,
+			e.target.dataset.unit,
+		);
+		unit = e.target.dataset.unit;
+		render(weatherData, e.target.dataset.unit);
 	});
 })();
+
+/*
+TODO
+Add button listener, when clicked edit the weatherData?
+add global weatherData
+const convertedData = {
+        ...weatherData,
+        temperature: convertTemperature(rawWeatherData.temperature, currentTempUnit.toLowerCase()),
+        feelsLike: convertTemperature(rawWeatherData.feelsLike, currentTempUnit.toLowerCase()),
+        windSpeed: convertSpeed(rawWeatherData.windSpeed, currentSpeedUnit),
+    };
+*/

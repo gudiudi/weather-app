@@ -16,8 +16,8 @@ const convertToMiles = (speed) => {
 
 const convertTemperature = (temp, measurement) => {
 	const formulas = {
-		f: convertToCelsius,
-		c: convertToFahrenheit,
+		c: convertToCelsius,
+		f: convertToFahrenheit,
 	};
 
 	return formulas[measurement]
@@ -27,8 +27,8 @@ const convertTemperature = (temp, measurement) => {
 
 const convertSpeed = (speed, measurement) => {
 	const formulas = {
-		mph: convertToKilometers,
-		"km/h": convertToMiles,
+		"km/h": convertToKilometers,
+		mph: convertToMiles,
 	};
 
 	return formulas[measurement]

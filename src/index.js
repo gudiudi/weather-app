@@ -21,9 +21,6 @@ import getWeatherData from "./weather.js";
 		render(weatherData);
 	}, 1000);
 
-	console.log(convertTemperature(weatherData.temperature, "c"));
-	console.log(convertSpeed(weatherData.windSpeed, "km/h"));
-
 	const form = document.querySelector("form");
 	form.addEventListener("submit", async (e) => {
 		e.preventDefault();

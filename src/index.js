@@ -70,15 +70,3 @@ import getWeatherData from "./weather.js";
 		render(weatherData, e.target.dataset.unit);
 	});
 })();
-
-/*
-TODO
-Add button listener, when clicked edit the weatherData?
-add global weatherData
-const convertedData = {
-        ...weatherData,
-        temperature: convertTemperature(rawWeatherData.temperature, currentTempUnit.toLowerCase()),
-        feelsLike: convertTemperature(rawWeatherData.feelsLike, currentTempUnit.toLowerCase()),
-        windSpeed: convertSpeed(rawWeatherData.windSpeed, currentSpeedUnit),
-    };
-*/
